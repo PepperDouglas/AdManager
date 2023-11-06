@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdManager.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,16 +12,25 @@ namespace AdManager.Entities {
         public string Description { get; set; }
         public string Price { get; set; }
         public int CategoryID { get; set; }
+        public int UserID { get; set; }
 
-        public Advertisement(int advertId, string title, string description, string price, int categoryID) {
+        public Advertisement(int advertId, string title, string description, string price, int categoryID, int userID) {
             AdvertID = advertId;
             Title = title;
             Description = description;
             Price = price;
             CategoryID = categoryID;
+            UserID = userID;
+        }
+        public Advertisement(string title, string description, string price, int categoryID, int userID) {
+            Title = title;
+            Description = description;
+            Price = price;
+            CategoryID = categoryID;
+            UserID = userID;
         }
         public void Save() {
-            //AdvertisementRepo.Save(this);
+            AdvertisementRepo.Save(this);
         }
     }
 

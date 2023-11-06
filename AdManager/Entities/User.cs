@@ -14,6 +14,11 @@ namespace AdManager.Entities {
             UserName = userName;
             Password = password;
         }
+        public User(int userId, string userName, string password) {
+            UserID = userId;
+            UserName = userName;
+            Password = password;
+        }
         public void Save() {
             //UserRepo.Save(this);
         }

@@ -6,6 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace AdManager.Repositories {
     public class AdvertisementRepo {
@@ -22,10 +24,15 @@ namespace AdManager.Repositories {
             //med instruktörer
             List<Advertisement> list = new List<Advertisement>();
             foreach (DataRow row in data.Rows) {
-                list.Add(new Advertisement((int)row.ItemArray[0], row.ItemArray[1].ToString(), row.ItemArray[2].ToString(), row.ItemArray[3].ToString(), (int)row.ItemArray[4]));
+                list.Add(new Advertisement((int)row.ItemArray[0], row.ItemArray[1].ToString(), row.ItemArray[2].ToString(), row.ItemArray[3].ToString(), (int)row.ItemArray[4], (int)row.ItemArray[5]));
             }
             return list;
 
+        }
+        public static void Save(Advertisement advert) {
+            string sql = $"insert into adverts(Title, Description, Price, CategoryID, UserID)" +
+                $"values('{advert.Title}', '{advert.Description}', '{advert.Price}', {advert.CategoryID}, {advert.UserID})";
+            DataHandler.ExecuteNonQuery(sql, new List<SqlParameter>());
         }
     }
 }

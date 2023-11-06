@@ -1,12 +1,12 @@
 ﻿USE [master]
 GO
-/****** Object:  Database [AdManager]    Script Date: 2023-11-01 21:40:44 ******/
+/****** Object:  Database [AdManager]    Script Date: 2023-11-06 21:02:21 ******/
 CREATE DATABASE [AdManager]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'AdManager', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER01\MSSQL\DATA\AdManager.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+( NAME = N'AdManager', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\AdManager.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
  LOG ON 
-( NAME = N'AdManager_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER01\MSSQL\DATA\AdManager_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+( NAME = N'AdManager_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\AdManager_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
  WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF
 GO
 ALTER DATABASE [AdManager] SET COMPATIBILITY_LEVEL = 160
@@ -84,7 +84,7 @@ ALTER DATABASE [AdManager] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP
 GO
 USE [AdManager]
 GO
-/****** Object:  Table [dbo].[Adverts]    Script Date: 2023-11-01 21:40:44 ******/
+/****** Object:  Table [dbo].[Adverts]    Script Date: 2023-11-06 21:02:21 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -92,16 +92,17 @@ GO
 CREATE TABLE [dbo].[Adverts](
 	[AdvertID] [int] IDENTITY(1,1) NOT NULL,
 	[Title] [nvarchar](30) NOT NULL,
-	[Description] [nvarchar](200) NULL,
+	[Description] [nvarchar](200) NOT NULL,
 	[Price] [varchar](8) NOT NULL,
 	[CategoryID] [int] NOT NULL,
+	[UserID] [int] NOT NULL,
  CONSTRAINT [PK_Adverts] PRIMARY KEY CLUSTERED 
 (
 	[AdvertID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 2023-11-01 21:40:44 ******/
+/****** Object:  Table [dbo].[Categories]    Script Date: 2023-11-06 21:02:21 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -115,7 +116,7 @@ CREATE TABLE [dbo].[Categories](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 2023-11-01 21:40:44 ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 2023-11-06 21:02:21 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,7 +125,7 @@ CREATE TABLE [dbo].[Users](
 	[UserID] [int] IDENTITY(1,1) NOT NULL,
 	[UserName] [nchar](10) NOT NULL,
 	[Password] [varchar](50) NOT NULL,
- CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
 (
 	[UserID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -134,6 +135,11 @@ ALTER TABLE [dbo].[Adverts]  WITH CHECK ADD  CONSTRAINT [FK_Adverts_Categories] 
 REFERENCES [dbo].[Categories] ([CategoryID])
 GO
 ALTER TABLE [dbo].[Adverts] CHECK CONSTRAINT [FK_Adverts_Categories]
+GO
+ALTER TABLE [dbo].[Adverts]  WITH CHECK ADD  CONSTRAINT [FK_Adverts_Users] FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+ALTER TABLE [dbo].[Adverts] CHECK CONSTRAINT [FK_Adverts_Users]
 GO
 USE [master]
 GO

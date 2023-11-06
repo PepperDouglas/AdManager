@@ -44,55 +44,49 @@
             // 
             // tBTitle
             // 
-            this.tBTitle.Location = new System.Drawing.Point(592, 142);
-            this.tBTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tBTitle.Location = new System.Drawing.Point(395, 95);
             this.tBTitle.Name = "tBTitle";
-            this.tBTitle.Size = new System.Drawing.Size(298, 26);
+            this.tBTitle.Size = new System.Drawing.Size(200, 20);
             this.tBTitle.TabIndex = 0;
             // 
             // tBPrice
             // 
-            this.tBPrice.Location = new System.Drawing.Point(592, 205);
-            this.tBPrice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tBPrice.Location = new System.Drawing.Point(395, 137);
             this.tBPrice.Name = "tBPrice";
-            this.tBPrice.Size = new System.Drawing.Size(148, 26);
+            this.tBPrice.Size = new System.Drawing.Size(100, 20);
             this.tBPrice.TabIndex = 1;
             // 
             // listBoxAds
             // 
             this.listBoxAds.FormattingEnabled = true;
-            this.listBoxAds.ItemHeight = 20;
-            this.listBoxAds.Location = new System.Drawing.Point(64, 72);
-            this.listBoxAds.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listBoxAds.Location = new System.Drawing.Point(43, 48);
             this.listBoxAds.Name = "listBoxAds";
-            this.listBoxAds.Size = new System.Drawing.Size(390, 344);
+            this.listBoxAds.Size = new System.Drawing.Size(261, 225);
             this.listBoxAds.TabIndex = 2;
-            this.listBoxAds.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBoxAds.SelectedIndexChanged += new System.EventHandler(this.listBoxAd_SelectedIndexChanged);
             // 
             // cBCategories
             // 
+            this.cBCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cBCategories.FormattingEnabled = true;
-            this.cBCategories.Location = new System.Drawing.Point(592, 72);
-            this.cBCategories.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cBCategories.Location = new System.Drawing.Point(395, 48);
             this.cBCategories.Name = "cBCategories";
-            this.cBCategories.Size = new System.Drawing.Size(298, 28);
+            this.cBCategories.Size = new System.Drawing.Size(200, 21);
             this.cBCategories.TabIndex = 3;
             // 
             // tBDescription
             // 
-            this.tBDescription.Location = new System.Drawing.Point(592, 266);
-            this.tBDescription.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tBDescription.Location = new System.Drawing.Point(395, 177);
             this.tBDescription.Multiline = true;
             this.tBDescription.Name = "tBDescription";
-            this.tBDescription.Size = new System.Drawing.Size(298, 150);
+            this.tBDescription.Size = new System.Drawing.Size(200, 101);
             this.tBDescription.TabIndex = 4;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(780, 202);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSearch.Location = new System.Drawing.Point(520, 135);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(112, 35);
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -100,30 +94,29 @@
             // 
             // btnRemoveAd
             // 
-            this.btnRemoveAd.Location = new System.Drawing.Point(64, 428);
-            this.btnRemoveAd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnRemoveAd.Location = new System.Drawing.Point(43, 285);
             this.btnRemoveAd.Name = "btnRemoveAd";
-            this.btnRemoveAd.Size = new System.Drawing.Size(112, 35);
+            this.btnRemoveAd.Size = new System.Drawing.Size(75, 23);
             this.btnRemoveAd.TabIndex = 6;
             this.btnRemoveAd.Text = "Remove Ad";
             this.btnRemoveAd.UseVisualStyleBackColor = true;
+            this.btnRemoveAd.Click += new System.EventHandler(this.btnRemoveAd_Click);
             // 
             // btnInsertAd
             // 
-            this.btnInsertAd.Location = new System.Drawing.Point(344, 428);
-            this.btnInsertAd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnInsertAd.Location = new System.Drawing.Point(229, 285);
             this.btnInsertAd.Name = "btnInsertAd";
-            this.btnInsertAd.Size = new System.Drawing.Size(112, 35);
+            this.btnInsertAd.Size = new System.Drawing.Size(75, 23);
             this.btnInsertAd.TabIndex = 7;
             this.btnInsertAd.Text = "Insert Ad";
             this.btnInsertAd.UseVisualStyleBackColor = true;
+            this.btnInsertAd.Click += new System.EventHandler(this.btnInsertAd_Click);
             // 
             // btnUpdateAd
             // 
-            this.btnUpdateAd.Location = new System.Drawing.Point(592, 426);
-            this.btnUpdateAd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnUpdateAd.Location = new System.Drawing.Point(395, 284);
             this.btnUpdateAd.Name = "btnUpdateAd";
-            this.btnUpdateAd.Size = new System.Drawing.Size(112, 35);
+            this.btnUpdateAd.Size = new System.Drawing.Size(75, 23);
             this.btnUpdateAd.TabIndex = 8;
             this.btnUpdateAd.Text = "Update Ad";
             this.btnUpdateAd.UseVisualStyleBackColor = true;
@@ -131,59 +124,55 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 43);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(43, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 20);
+            this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "Advertisments";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(496, 77);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(331, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
+            this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Category";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(496, 146);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(331, 97);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 20);
+            this.label3.Size = new System.Drawing.Size(27, 13);
             this.label3.TabIndex = 11;
             this.label3.Text = "Title";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(496, 209);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(331, 139);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 20);
+            this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "Price";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(496, 271);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(331, 181);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 20);
+            this.label5.Size = new System.Drawing.Size(60, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Description";
             // 
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Palatino Linotype", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnLogin.Location = new System.Drawing.Point(813, 488);
+            this.btnLogin.Location = new System.Drawing.Point(542, 325);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(162, 53);
+            this.btnLogin.Size = new System.Drawing.Size(108, 35);
             this.btnLogin.TabIndex = 14;
             this.btnLogin.Text = "Log In";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -191,9 +180,9 @@
             // 
             // AdManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1030, 595);
+            this.ClientSize = new System.Drawing.Size(687, 397);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -209,7 +198,6 @@
             this.Controls.Add(this.listBoxAds);
             this.Controls.Add(this.tBPrice);
             this.Controls.Add(this.tBTitle);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AdManager";
             this.Text = "AdManager 1.0";
             this.ResumeLayout(false);
