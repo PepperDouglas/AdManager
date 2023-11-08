@@ -11,21 +11,24 @@ namespace AdManager.Entities {
         public string Title { get; set; }
         public string Description { get; set; }
         public string Price { get; set; }
+        public DateTime PostDate { get; set; }
         public int CategoryID { get; set; }
         public int UserID { get; set; }
 
-        public Advertisement(int advertId, string title, string description, string price, int categoryID, int userID) {
+        public Advertisement(int advertId, string title, string description, string price, DateTime dateTime, int categoryID, int userID) {
             AdvertID = advertId;
             Title = title;
             Description = description;
             Price = price;
+            PostDate = dateTime;
             CategoryID = categoryID;
             UserID = userID;
         }
-        public Advertisement(string title, string description, string price, int categoryID, int userID) {
+        public Advertisement(string title, string description, string price, DateTime dateTime, int categoryID, int userID) {
             Title = title;
             Description = description;
             Price = price;
+            PostDate = dateTime;
             CategoryID = categoryID;
             UserID = userID;
         }

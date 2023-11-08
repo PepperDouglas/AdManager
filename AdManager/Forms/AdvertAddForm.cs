@@ -25,7 +25,7 @@ namespace AdManager.Forms
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
-            Advertisement advert = new Advertisement(tBTitle.Text, tBDescription.Text, tBPrice.Text, cBCategories.SelectedIndex + 1, UserID);
+            Advertisement advert = new Advertisement(tBTitle.Text, tBDescription.Text, tBPrice.Text, DateTime.Now, cBCategories.SelectedIndex + 1, UserID);
             AdvertisementRepo.Save(advert);
             this.Close();
         }
