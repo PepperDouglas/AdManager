@@ -12,12 +12,13 @@ using System.Globalization;
 
 namespace AdManager.Repositories {
     public class AdvertisementRepo {
-        public static List<Advertisement> GetAdverts(int categoryId) {
-            string sql;
+        public static List<Advertisement> GetAdverts(int categoryId, string title) {
+            string sql = "select * from Adverts";
             if (categoryId != -1) { 
-                sql = $"select * from Adverts where CategoryID = '{categoryId}'";          
-            } else {
-                sql = "select * from Adverts";
+                sql +=  $" where CategoryID = '{categoryId}'";          
+            }
+            if (title != "") {
+                sql += $" and Title like ('%{title}%')";
             }
             DataTable data = DataHandler.ExecuteReturnTable(sql, new List<SqlParameter>());
 
@@ -25,14 +26,18 @@ namespace AdManager.Repositories {
             //med instruktörer
             List<Advertisement> list = new List<Advertisement>();
             foreach (DataRow row in data.Rows) {
-                list.Add(new Advertisement((int)row.ItemArray[0], row.ItemArray[1].ToString(), row.ItemArray[2].ToString(), row.ItemArray[3].ToString(), DateTime.ParseExact(row.ItemArray[4].ToString(), "yyyy-MM-dd hh:mm:ss", CultureInfo.InvariantCulture), (int)row.ItemArray[5], (int)row.ItemArray[6]));
+                list.Add(new Advertisement((int)row.ItemArray[0], row.ItemArray[1].ToString(), row.ItemArray[2].ToString(), row.ItemArray[3].ToString(), (DateTime)row.ItemArray[4], (int)row.ItemArray[5], (int)row.ItemArray[6]));
             }
             return list;
-
+        }
+        public static void RemoveAdvert(int advertid) {
+            //Kan bytas från void med try catch eller nåt
+            string sql = $"delete from adverts where AdvertID = '{advertid}'";
+            DataHandler.ExecuteNonQuery(sql, new List<SqlParameter>());
         }
         public static void Save(Advertisement advert) {
-            string sql = $"insert into adverts(Title, Description, Price, CategoryID, UserID)" +
-                $"values('{advert.Title}', '{advert.Description}', '{advert.Price}', {advert.CategoryID}, {advert.UserID})";
+            string sql = $"insert into adverts(Title, Description, Price, PostDate, CategoryID, UserID)" +
+                $"values('{advert.Title}', '{advert.Description}', '{advert.Price}', '{advert.PostDate}', {advert.CategoryID}, {advert.UserID})";
             DataHandler.ExecuteNonQuery(sql, new List<SqlParameter>());
         }
     }

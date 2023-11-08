@@ -17,22 +17,29 @@ namespace AdManager
     {
         public bool IsAdmin { get; set; }
         public LoginForm LoginForm { get; set; }
+        public bool SelectionEnabled { get; set; }
         public AdManager() {
             LoginForm = new LoginForm();
             InitializeComponent();
             IsAdmin = false;
-
+            SelectionEnabled = true;
 
             cBCategories.DisplayMember = "CategoryName";
             cBCategories.ValueMember = "CategoryID";
             cBCategories.DataSource = CategoryRepo.GetCategories();
+
+            comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
         }
 
         private void listBoxAd_SelectedIndexChanged(object sender, EventArgs e) {
-            if (listBoxAds.SelectedIndex >= 0) {
-                Advertisement selectedAdvert = listBoxAds.SelectedItem as Advertisement;
-                if (selectedAdvert != null) {
-                    UpdateDetails(selectedAdvert);
+            if (SelectionEnabled) {
+                if (listBoxAds.SelectedIndex >= 0) {
+                    Advertisement selectedAdvert = listBoxAds.SelectedItem as Advertisement;
+                    if (selectedAdvert != null) {
+                        UpdateDetails(selectedAdvert);
+                    }
+
                 }
 
             }
@@ -49,23 +56,40 @@ namespace AdManager
         }
 
         private void btnSearch_Click(object sender, EventArgs e) {
-            tBTitle.Text = "";
-            tBPrice.Text = "";
-            tBDescription.Text = "";
+            
             listBoxAds.DisplayMember = "Title";
             listBoxAds.ValueMember = "AdvertID";
             int categorySearchTerm;
+            string titleSearchTerm;
             if (cBCategories.SelectedValue == null) {
                 categorySearchTerm = -1;
             } else {
                 categorySearchTerm = (int)cBCategories.SelectedValue;
             }
-            listBoxAds.DataSource = AdvertisementRepo.GetAdverts(categorySearchTerm);
+            if (string.IsNullOrWhiteSpace(tBTitle.Text)) {
+                titleSearchTerm = "";
+            } else {
+                titleSearchTerm = tBTitle.Text;
+            }
+            //tBTitle.Text = "";
+            tBPrice.Text = "";
+            tBDescription.Text = "";
+            SelectionEnabled = false;
+            listBoxAds.DataSource = AdvertisementRepo.GetAdverts(categorySearchTerm, titleSearchTerm);
+            SelectionEnabled = true;
         }
 
         private void btnRemoveAd_Click(object sender, EventArgs e) {
             if (LoginForm.AdminID != 0) {
                 MessageBox.Show("Du är inloggad");
+                Advertisement selectedAdvert = (Advertisement)listBoxAds.SelectedItem;
+                if (selectedAdvert.UserID == LoginForm.AdminID) {
+                    AdvertisementRepo.RemoveAdvert(selectedAdvert.AdvertID);
+                    //Uppdatera searchen
+                    btnSearch_Click(null, null);
+                } else {
+                    MessageBox.Show("Du kan endast ta bort dina egna annonser");
+                }
             } else {
                 MessageBox.Show("Du är INTE inloggad");
             }
