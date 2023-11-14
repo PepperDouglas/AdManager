@@ -25,9 +25,26 @@ namespace AdManager.Forms
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
-            Advertisement advert = new Advertisement(tBTitle.Text, tBDescription.Text, tBPrice.Text, DateTime.Now, cBCategories.SelectedIndex + 1, UserID);
-            AdvertisementRepo.Save(advert);
-            this.Close();
+            int price;
+            if (!int.TryParse(tBPrice.Text, out _)){
+                MessageBox.Show("Please enter a valid price");
+                return;
+            }
+            Advertisement advert = new Advertisement(tBTitle.Text, tBDescription.Text, int.Parse(tBPrice.Text), DateTime.Now, cBCategories.SelectedIndex + 1, UserID);
+            bool saveSuccess = AdvertisementRepo.Save(advert);
+            if (saveSuccess) {
+                this.Close();
+            }
+        }
+
+        private void UpdateWordCountTitle(object sender, EventArgs e) {
+            int chars = tBTitle.Text.Length;
+            labelTitleCharCount.Text = $"( {chars} / 30 )";
+        }
+
+        private void UpdateWordCountDescription(object sender, EventArgs e) {
+            int chars = tBDescription.Text.Length;
+            labelCharCounter.Text = $"( {chars} / 200 )";
         }
     }
 }

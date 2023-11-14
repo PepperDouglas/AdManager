@@ -29,6 +29,11 @@ namespace AdManager.Forms
             string username = textBoxUserName.Text;
             string password = textBoxPassword.Text;
             AdminID = UserRepo.RetrieveUserId(username, password);
+            if (AdminID == 0) {
+                MessageBox.Show("Wrong username or password");
+            } else {
+                this.Close();
+            }
             //IsAdmin = UserRepo.IsAdminQuestion(username, password);
         }
     }

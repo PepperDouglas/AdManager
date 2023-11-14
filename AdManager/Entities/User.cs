@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdManager.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,8 @@ namespace AdManager.Entities {
             UserName = userName;
             Password = password;
         }
-        public void Save() {
-            //UserRepo.Save(this);
+        public bool Save() {
+            return UserRepo.Save(this);
         }
     }
 }

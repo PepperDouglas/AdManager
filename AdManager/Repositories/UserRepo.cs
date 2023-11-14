@@ -12,6 +12,7 @@ using System.ComponentModel;
 namespace AdManager.Repositories {
     public static class UserRepo
     {
+        //Varför count? Kontrollera det
         public static bool IsAdminQuestion(string username, string password) {
             string sql = $"select count(*) from Users where UserName = '{username}' and Password = '{password}'";
             //We might not need ExecuteReturnTable, but a simpler one!
@@ -28,6 +29,26 @@ namespace AdManager.Repositories {
                 return userList.First().UserID;
             }
             return 0;
+        }
+
+        //Returnera om det gick att skapa eller om namnet redan finns
+
+        //Se efter att namnet inte är för långt
+        public static bool Save(User user) {
+            //Hämta användare för att se om det redan finns en med det namnet
+            string sql = $"select UserName from Users";
+            DataTable data = DataHandler.ExecuteReturnTable(sql, new List<SqlParameter>());
+            List<string> userList = new List<string>(); 
+            foreach (DataRow row in data.Rows) {
+                userList.Add(row.ItemArray[0].ToString().Trim());
+            }
+            if (userList.Contains(user.UserName)) {
+                return false;
+            }
+            sql = $"insert into Users(UserName, Password)" +
+                $"values('{user.UserName}', '{user.Password}')";
+            DataHandler.ExecuteNonQuery(sql, new List<SqlParameter>());
+            return true;
         }
     }
 }

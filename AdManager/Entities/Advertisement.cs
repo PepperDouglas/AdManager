@@ -10,12 +10,12 @@ namespace AdManager.Entities {
         public int AdvertID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Price { get; set; }
+        public int Price { get; set; }
         public DateTime PostDate { get; set; }
         public int CategoryID { get; set; }
         public int UserID { get; set; }
 
-        public Advertisement(int advertId, string title, string description, string price, DateTime dateTime, int categoryID, int userID) {
+        public Advertisement(int advertId, string title, string description, int price, DateTime dateTime, int categoryID, int userID) {
             AdvertID = advertId;
             Title = title;
             Description = description;
@@ -24,7 +24,7 @@ namespace AdManager.Entities {
             CategoryID = categoryID;
             UserID = userID;
         }
-        public Advertisement(string title, string description, string price, DateTime dateTime, int categoryID, int userID) {
+        public Advertisement(string title, string description, int price, DateTime dateTime, int categoryID, int userID) {
             Title = title;
             Description = description;
             Price = price;
@@ -34,6 +34,9 @@ namespace AdManager.Entities {
         }
         public void Save() {
             AdvertisementRepo.Save(this);
+        }
+        public void Update() {
+            AdvertisementRepo.Update(this);
         }
     }
 
