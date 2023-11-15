@@ -14,12 +14,15 @@ namespace AdManager.Repositories {
     {
         //Varför count? Kontrollera det
         public static bool IsAdminQuestion(string username, string password) {
-            string sql = $"select count(*) from Users where UserName = '{username}' and Password = '{password}'";
+            string sql = $"select count(*) from Users where UserName = '{username}' COLLATE SQL_Latin1_General_CP1_CS_AS and Password = '{password}' COLLATE SQL_Latin1_General_CP1_CS_AS";
             //We might not need ExecuteReturnTable, but a simpler one!
+            //New try:-->
+
+
             return DataHandler.UserExistsQuestion(sql);
         }
         public static int RetrieveUserId(string username, string password) {
-            string sql = $"select * from Users where UserName = '{username}' and Password = '{password}'";
+            string sql = $"select * from Users where UserName = '{username}' COLLATE SQL_Latin1_General_CP1_CS_AS and Password = '{password}' COLLATE SQL_Latin1_General_CP1_CS_AS";
             DataTable data = DataHandler.ExecuteReturnTable(sql, new List<SqlParameter>());
             List<User> userList = new List<User>();
             foreach (DataRow row in data.Rows) {
