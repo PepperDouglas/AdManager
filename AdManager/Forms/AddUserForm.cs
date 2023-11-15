@@ -16,6 +16,10 @@ namespace AdManager.Forms {
         }
 
         private void buttonRegister_Click(object sender, EventArgs e) {
+            if (string.IsNullOrEmpty(tBUserName.Text) || string.IsNullOrEmpty(tBPassword.Text)) {
+                MessageBox.Show("Please enter required values");
+                return;
+            }
             User user = new User(tBUserName.Text, tBPassword.Text);
             bool userWasCreated = user.Save();
             if (userWasCreated) {

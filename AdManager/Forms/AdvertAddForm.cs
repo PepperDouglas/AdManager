@@ -26,6 +26,10 @@ namespace AdManager.Forms
 
         private void btnSave_Click(object sender, EventArgs e) {
             int price;
+            if (string.IsNullOrEmpty(tBTitle.Text) || string.IsNullOrEmpty(tBDescription.Text)) {
+                MessageBox.Show("Please fill out the required fields");
+                return;
+            }
             if (!int.TryParse(tBPrice.Text, out _)){
                 MessageBox.Show("Please enter a valid price");
                 return;
@@ -45,6 +49,10 @@ namespace AdManager.Forms
         private void UpdateWordCountDescription(object sender, EventArgs e) {
             int chars = tBDescription.Text.Length;
             labelCharCounter.Text = $"( {chars} / 200 )";
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }

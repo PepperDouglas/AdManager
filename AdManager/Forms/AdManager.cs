@@ -80,6 +80,9 @@ namespace AdManager
         }
 
         private void btnRemoveAd_Click(object sender, EventArgs e) {
+            if (listBoxAds.SelectedItem == null) {
+                return;
+            }
             if (LoginForm.AdminID != 0) {
                 //MessageBox.Show("Du är inloggad");
                 Advertisement selectedAdvert = (Advertisement)listBoxAds.SelectedItem;
@@ -152,6 +155,9 @@ namespace AdManager
         }
 
         private void btnUpdateAd_Click(object sender, EventArgs e) {
+            if (listBoxAds.SelectedItem == null) {
+                return;
+            }
             if (LoginForm.AdminID != 0) {
                 //MessageBox.Show("Du är inloggad");
                 Advertisement selectedAdvert = (Advertisement)listBoxAds.SelectedItem;
