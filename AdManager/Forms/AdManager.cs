@@ -28,8 +28,8 @@ namespace AdManager
             cBCategories.ValueMember = "CategoryID";
             cBCategories.DataSource = CategoryRepo.GetCategories();
 
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0;
+            comboBoxSortType.SelectedIndex = 0;
+            comboBoxSortOrder.SelectedIndex = 0;
         }
 
         private void listBoxAd_SelectedIndexChanged(object sender, EventArgs e) {
@@ -126,8 +126,11 @@ namespace AdManager
         }
 
         private void buttonFilter_Click(object sender, EventArgs e) {
-            string sortType = comboBox1.Text; //Can be Price or Date
-            string sortOrder = comboBox2.Text; //Can be Ascending or Descending
+            if (listBoxAds.SelectedItem == null) {
+                return;
+            }
+            string sortType = comboBoxSortType.Text; //Can be Price or Date
+            string sortOrder = comboBoxSortOrder.Text; //Can be Ascending or Descending
             
             List<Advertisement> adList = (List<Advertisement>)listBoxAds.DataSource;
 

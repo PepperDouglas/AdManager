@@ -44,8 +44,8 @@
             this.btnRegister = new System.Windows.Forms.Button();
             this.buttonFilter = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxSortType = new System.Windows.Forms.ComboBox();
+            this.comboBoxSortOrder = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // tBTitle
@@ -244,39 +244,39 @@
             this.label6.TabIndex = 18;
             this.label6.Text = "Sort by";
             // 
-            // comboBox1
+            // comboBoxSortType
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxSortType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSortType.FormattingEnabled = true;
+            this.comboBoxSortType.Items.AddRange(new object[] {
             "Price",
             "Date"});
-            this.comboBox1.Location = new System.Drawing.Point(134, 418);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(152, 28);
-            this.comboBox1.TabIndex = 19;
+            this.comboBoxSortType.Location = new System.Drawing.Point(134, 418);
+            this.comboBoxSortType.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxSortType.Name = "comboBoxSortType";
+            this.comboBoxSortType.Size = new System.Drawing.Size(152, 28);
+            this.comboBoxSortType.TabIndex = 19;
             // 
-            // comboBox2
+            // comboBoxSortOrder
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.comboBoxSortOrder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSortOrder.FormattingEnabled = true;
+            this.comboBoxSortOrder.Items.AddRange(new object[] {
             "Ascending",
             "Descending"});
-            this.comboBox2.Location = new System.Drawing.Point(297, 418);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(157, 28);
-            this.comboBox2.TabIndex = 20;
+            this.comboBoxSortOrder.Location = new System.Drawing.Point(297, 418);
+            this.comboBoxSortOrder.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxSortOrder.Name = "comboBoxSortOrder";
+            this.comboBoxSortOrder.Size = new System.Drawing.Size(157, 28);
+            this.comboBoxSortOrder.TabIndex = 20;
             // 
             // AdManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1077, 596);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxSortOrder);
+            this.Controls.Add(this.comboBoxSortType);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.buttonFilter);
             this.Controls.Add(this.btnRegister);
@@ -325,8 +325,8 @@
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button buttonFilter;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxSortType;
+        private System.Windows.Forms.ComboBox comboBoxSortOrder;
     }
 }
 
