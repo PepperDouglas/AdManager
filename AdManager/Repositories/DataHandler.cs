@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace AdManager.Repositories {
     public static class DataHandler {
-        private static string _connString = "Data Source=DESKTOP-HUERL9P;Initial Catalog=AdManager;Integrated Security=SSPI;";
-        //private static string _connString = "Data Source=LAPTOP-DARKLAKE\\MSSQLSERVER01;Initial Catalog=AdManager;Integrated Security=SSPI;";
+        //private static string _connString = "Data Source=DESKTOP-HUERL9P;Initial Catalog=AdManager;Integrated Security=SSPI;";
+        private static string _connString = "Data Source=LAPTOP-DARKLAKE\\MSSQLSERVER01;Initial Catalog=AdManager;Integrated Security=SSPI;";
         public static void ExecuteNonQuery(string sql, List<SqlParameter> parameters) {
             using (SqlConnection conn = new SqlConnection(_connString)) {
                 conn.Open();

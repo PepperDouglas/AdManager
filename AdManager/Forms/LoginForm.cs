@@ -34,7 +34,6 @@ namespace AdManager.Forms
             } else {
                 this.Close();
             }
-            //IsAdmin = UserRepo.IsAdminQuestion(username, password);
         }
     }
 }

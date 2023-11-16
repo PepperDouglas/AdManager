@@ -71,7 +71,6 @@ namespace AdManager
             } else {
                 titleSearchTerm = tBTitle.Text;
             }
-            //tBTitle.Text = "";
             tBPrice.Text = "";
             tBDescription.Text = "";
             SelectionEnabled = false;
@@ -84,11 +83,10 @@ namespace AdManager
                 return;
             }
             if (LoginForm.AdminID != 0) {
-                //MessageBox.Show("Du är inloggad");
                 Advertisement selectedAdvert = (Advertisement)listBoxAds.SelectedItem;
                 if (selectedAdvert.UserID == LoginForm.AdminID) {
                     AdvertisementRepo.RemoveAdvert(selectedAdvert.AdvertID);
-                    //Uppdatera searchen
+                    //Update the search
                     btnSearch_Click(null, null);
                 } else {
                     MessageBox.Show("You can only remove your own ads");
@@ -99,8 +97,7 @@ namespace AdManager
 
         }
 
-        private void btnInsertAd_Click(object sender, EventArgs e) {
-            
+        private void btnInsertAd_Click(object sender, EventArgs e) {         
             if (LoginForm.AdminID != 0) {
                 AdvertAddForm addForm = new AdvertAddForm(LoginForm.AdminID);
                 addForm.ShowDialog();
@@ -115,7 +112,6 @@ namespace AdManager
                 registerForm.ShowDialog();
             } else {
                 MessageBox.Show("Please log out to register a new account");
-
             }
         }
 
@@ -124,17 +120,14 @@ namespace AdManager
                 LoginForm.IsAdmin = false;
                 LoginForm.AdminID = 0;
                 MessageBox.Show("You have signed out");
-
             } else {
                 MessageBox.Show("Please log in to log out");
-
             }
         }
 
         private void buttonFilter_Click(object sender, EventArgs e) {
             string sortType = comboBox1.Text; //Can be Price or Date
             string sortOrder = comboBox2.Text; //Can be Ascending or Descending
-            //Test---
             
             List<Advertisement> adList = (List<Advertisement>)listBoxAds.DataSource;
 
@@ -149,9 +142,6 @@ namespace AdManager
             }
 
             listBoxAds.Refresh();
-            //listBoxAds.DataSource = adList;
-            //listBoxAds.DisplayMember = "Title";
-            //listBoxAds.ValueMember = "AdvertID";
         }
 
         private void btnUpdateAd_Click(object sender, EventArgs e) {
@@ -159,19 +149,15 @@ namespace AdManager
                 return;
             }
             if (LoginForm.AdminID != 0) {
-                //MessageBox.Show("Du är inloggad");
                 Advertisement selectedAdvert = (Advertisement)listBoxAds.SelectedItem;
                 if (selectedAdvert.UserID == LoginForm.AdminID) {
                     if (!int.TryParse(tBPrice.Text, out _)) {
                         MessageBox.Show("Enter a valid price");
                         return;
                     }
-                    //AdvertisementRepo.RemoveAdvert(selectedAdvert.AdvertID);
                     Advertisement updatedAd = new Advertisement(selectedAdvert.AdvertID, tBTitle.Text, tBDescription.Text
                         , int.Parse(tBPrice.Text), DateTime.Now, cBCategories.SelectedIndex + 1, selectedAdvert.UserID);
-                    //Uppdatera searchen
                     updatedAd.Update();
-                    //btnSearch_Click(null, null);
                 } else {
                     MessageBox.Show("You can only update your own ads");
                 }

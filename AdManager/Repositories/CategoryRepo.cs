@@ -13,8 +13,6 @@ namespace AdManager.Repositories {
             string sql = "select CategoryID, CategoryName from Categories";
             DataTable data = DataHandler.ExecuteReturnTable(sql, new List<SqlParameter>());
 
-            //Här måste vi göra en mappning eftersom vi får en DT men vill returnera en lista
-            //med instruktörer
             List<Category> list = new List<Category>();
             foreach (DataRow row in data.Rows) {
                 list.Add(new Category((int)row.ItemArray[0], row.ItemArray[1].ToString()));

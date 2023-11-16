@@ -14,9 +14,5 @@ namespace AdManager.Entities {
             CategoryID = categoryId;
             CategoryName = categoryName;
         }
-
-        public void Save() {
-            //CategoryRepo.Save(this);
-        }
     }
 }
